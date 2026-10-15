@@ -70,89 +70,197 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* 2. Hero Background Zoom & Cross-Fade Slider */
+        /* 2. Hero Background Zoom & Cross-Fade Slider (Sáng rõ, chuẩn 100% theo bản gốc) */
         .fusion-builder-row-4 {
             position: relative !important;
             overflow: hidden !important;
-            background: #1a3816 !important;
+            background: transparent !important;
+            min-height: 520px !important;
+            --awb-background-image: none !important;
         }
+        /* Lớp phủ mờ nhẹ nhàng giữ cho ảnh thức ăn sáng rõ tự nhiên và làm nổi chữ trắng */
         .fusion-builder-row-4::before {
             content: "" !important;
             position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
+            inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            background: linear-gradient(180deg, rgba(16, 32, 14, 0.35) 0%, rgba(16, 32, 14, 0.58) 100%) !important;
-            z-index: 1 !important;
+            background: linear-gradient(180deg, rgba(15, 28, 15, 0.45) 0%, rgba(15, 28, 15, 0.22) 40%, rgba(15, 28, 15, 0.52) 100%) !important;
+            z-index: 2 !important;
             pointer-events: none !important;
         }
-        .fusion-builder-row-4 .awb-background-slider,
-        .awb-background-slider {
+        .fusion-builder-row-4 .awb-background-slider {
             position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
+            inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
             overflow: hidden !important;
-            z-index: 0 !important;
+            z-index: 1 !important;
             pointer-events: none !important;
             mix-blend-mode: normal !important;
         }
-        .fusion-builder-row-4 .awb-background-slider .swiper-wrapper,
-        .awb-background-slider .swiper-wrapper {
-            position: relative !important;
+        .fusion-builder-row-4 .awb-background-slider .swiper-wrapper {
+            position: absolute !important;
+            inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
             display: block !important;
         }
-        .fusion-builder-row-4 .awb-background-slider .swiper-slide,
-        .awb-background-slider .swiper-slide {
+        .fusion-builder-row-4 .awb-background-slider .swiper-slide {
             position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
+            inset: 0 !important;
             width: 100% !important;
             height: 100% !important;
             opacity: 0;
             transform: scale(1.0);
             transition: opacity 1.8s ease-in-out, transform 7s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+            z-index: 1 !important;
         }
-        /* First slide is visible IMMEDIATELY on render */
+        /* Ảnh đầu tiên luôn luôn hiển thị 100% ngay từ đầu */
         .fusion-builder-row-4 .awb-background-slider .swiper-slide:first-child,
-        .awb-background-slider .swiper-slide:first-child {
+        .fusion-builder-row-4 .awb-background-slider .swiper-slide.is-active {
             opacity: 1 !important;
+            transform: scale(1.06) !important;
         }
-        .fusion-builder-row-4 .awb-background-slider .swiper-slide.is-active,
-        .awb-background-slider .swiper-slide.is-active,
-        .awb-background-slider .swiper-slide.swiper-slide-active {
-            opacity: 1 !important;
-            transform: scale(1.08) !important;
-        }
-        .fusion-builder-row-4 .awb-background-slider img,
-        .awb-background-slider img {
+        .fusion-builder-row-4 .awb-background-slider img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
             object-position: center !important;
             display: block !important;
+            filter: brightness(0.96) contrast(1.04) !important;
+            opacity: 1 !important;
         }
         .fusion-builder-row-4 .fusion-builder-row {
             position: relative !important;
-            z-index: 2 !important;
+            z-index: 3 !important;
+        }
+        .fusion-builder-row-4 h1.fusion-title-heading {
+            font-family: 'Happy Monkey', cursive, sans-serif !important;
+            color: #ffffff !important;
+            font-size: 64px !important;
+            font-weight: 700 !important;
+            text-transform: capitalize !important;
+            letter-spacing: -0.5px !important;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6) !important;
+            line-height: 1.15 !important;
+            margin-bottom: 12px !important;
+        }
+        .fusion-builder-row-4 .fusion-text p {
+            color: #ffffff !important;
+            font-size: 20px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+            margin-bottom: 34px !important;
+        }
+        .fusion-builder-row-4 .button-4 {
+            background-color: #ffa42d !important;
+            border-color: #ffa42d !important;
+            color: #ffffff !important;
+            border-radius: 6px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 16px rgba(255, 164, 45, 0.4) !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .fusion-builder-row-4 .button-4:hover {
+            background-color: #e68a15 !important;
+            border-color: #e68a15 !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 24px rgba(255, 164, 45, 0.55) !important;
+        }
+        .fusion-builder-row-4 .button-5 {
+            background-color: transparent !important;
+            border: 2px solid #ffffff !important;
+            color: #ffffff !important;
+            border-radius: 6px !important;
+            font-weight: 700 !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .fusion-builder-row-4 .button-5:hover {
+            background-color: #ffffff !important;
+            color: #141414 !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3) !important;
         }
 
         /* 3. Gradual Scroll-Down Cascade Reveal ("Hiện ra từ từ khi lướt xuống") */
         .reveal-fade-in {
             opacity: 0;
-            transform: translateY(38px);
-            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            transition-delay: calc(var(--anim-index, 0) * 0.12s) !important;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            transition-delay: calc(var(--anim-index, 0) * 0.1s) !important;
             will-change: opacity, transform;
             visibility: visible !important;
         }
         .reveal-fade-in.is-visible {
             opacity: 1 !important;
             transform: translateY(0) !important;
+        }
+
+        /* Banner Backgrounds Explicit CSS */
+        .fusion-builder-column-38 .fusion-column-wrapper {
+            background-image: linear-gradient(180deg, rgba(78, 124, 39, 0.88) 0%, rgba(78, 124, 39, 0.78) 100%), url('/wp-content/uploads/sites/186/2023/12/vegan-ready-meals-banner-1.jpg') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            border-radius: 8px !important;
+        }
+        .fusion-builder-row-9 {
+            background-image: url('/wp-content/uploads/sites/186/2024/01/plants-bg-3.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        .fusion-builder-row-9 .fusion_builder_column_inner .fusion-column-wrapper {
+            background-image: url('/wp-content/uploads/sites/186/2024/01/flower-item-bg-1.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            border-radius: 8px !important;
+        }
+        .fusion-builder-row-10 .fusion-builder-column-45 .fusion-column-wrapper {
+            background-image: url('/wp-content/uploads/sites/186/2024/01/section-bg-3.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+        .fusion-builder-row-12 {
+            background-image: url('/wp-content/uploads/sites/186/2024/01/section-bg-3.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-color: #fbf8f2 !important;
+        }
+        .fusion-builder-row-14 {
+            background-image: linear-gradient(rgba(10, 20, 10, 0.65), rgba(10, 20, 10, 0.75)), url('/wp-content/uploads/sites/186/2024/01/vegan-cta-bg-1.jpg') !important;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+
+        /* Countdown Timer styling */
+        .fusion-countdown .fusion-dash {
+            background: #76b62b !important;
+            color: #ffffff !important;
+            border-radius: 6px !important;
+            padding: 8px 14px !important;
+            display: inline-flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            min-width: 58px !important;
+            margin: 0 4px !important;
+        }
+        .fusion-countdown .fusion-digit-wrapper {
+            font-size: 20px !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            line-height: 1.1 !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+        .fusion-countdown .fusion-dash-title {
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            margin-top: 2px !important;
         }
 
         /* 4. Swiper Product Carousels Styling */
@@ -640,16 +748,63 @@
                 });
             }
 
+            // Auto-load all background images from data-bg-url & data-bg
+            document.querySelectorAll('[data-bg-url], [data-bg]').forEach(el => {
+                const bg = el.getAttribute('data-bg-url') || el.getAttribute('data-bg');
+                if (bg) {
+                    const gradient = el.getAttribute('data-bg-gradient');
+                    if (gradient) {
+                        el.style.backgroundImage = `${gradient}, url(${bg})`;
+                    } else {
+                        el.style.backgroundImage = `url(${bg})`;
+                    }
+                    el.style.backgroundSize = el.style.backgroundSize || 'cover';
+                    el.style.backgroundPosition = el.style.backgroundPosition || 'center';
+                }
+            });
+
+            // Live Countdown Timer for Big Day Fresh Deals
+            function updateDealCountdown() {
+                const now = new Date();
+                const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3, 23, 59, 59);
+                let diff = Math.max(0, Math.floor((target - now) / 1000));
+
+                const days = Math.floor(diff / 86400);
+                diff %= 86400;
+                const hours = Math.floor(diff / 3600);
+                diff %= 3600;
+                const mins = Math.floor(diff / 60);
+                const secs = diff % 60;
+
+                const pad = (n) => String(n).padStart(2, '0');
+
+                const daysEl = document.querySelector('.fusion-dash-days .fusion-digit-wrapper');
+                const hoursEl = document.querySelector('.fusion-dash-hours .fusion-digit-wrapper');
+                const minsEl = document.querySelector('.fusion-dash-minutes .fusion-digit-wrapper');
+                const secsEl = document.querySelector('.fusion-dash-seconds .fusion-digit-wrapper');
+
+                if (daysEl) daysEl.innerHTML = `<span class="fusion-digit">${pad(days)}</span>`;
+                if (hoursEl) hoursEl.innerHTML = `<span class="fusion-digit">${pad(hours)}</span>`;
+                if (minsEl) minsEl.innerHTML = `<span class="fusion-digit">${pad(mins)}</span>`;
+                if (secsEl) secsEl.innerHTML = `<span class="fusion-digit">${pad(secs)}</span>`;
+            }
+            setInterval(updateDealCountdown, 1000);
+            updateDealCountdown();
+
             // 3. Staggered Gradual Cascade Reveal on Scroll ("Lướt xuống hiện ra từ từ")
-            document.querySelectorAll('.fusion-builder-row, .fusion-grid, .swiper-wrapper').forEach(row => {
-                const children = row.querySelectorAll(':scope > .fusion-layout-column, :scope > .post-card, :scope > .swiper-slide, :scope > .fusion-grid-column');
+            // Exclude hero banner (.fusion-builder-row-4) and .awb-background-slider
+            document.querySelectorAll('.fusion-builder-row, .fusion-grid, .fusion-post-cards .swiper-wrapper').forEach(row => {
+                if (row.closest('.fusion-builder-row-4') || row.closest('.awb-background-slider')) return;
+                const children = row.querySelectorAll(':scope > .fusion-layout-column, :scope > .post-card, :scope > .fusion-grid-column');
                 children.forEach((child, index) => {
+                    if (child.closest('.fusion-builder-row-4') || child.closest('.awb-background-slider')) return;
                     child.style.setProperty('--anim-index', index);
                     child.classList.add('reveal-fade-in');
                 });
             });
 
-            document.querySelectorAll('.fusion-title:not(.fusion-title-marquee), .fusion-animated, .fusion-image-element').forEach(el => {
+            document.querySelectorAll('.fusion-title:not(.fusion-title-marquee), .fusion-image-element').forEach(el => {
+                if (el.closest('.fusion-builder-row-4') || el.closest('.awb-background-slider') || el.closest('.fusion-tb-header')) return;
                 el.classList.add('reveal-fade-in');
             });
 
