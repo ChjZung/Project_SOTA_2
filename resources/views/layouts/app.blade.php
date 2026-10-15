@@ -71,42 +71,74 @@
         }
 
         /* 2. Hero Background Zoom & Cross-Fade Slider */
-        .awb-background-slider {
+        .fusion-builder-row-4 {
+            position: relative !important;
+            overflow: hidden !important;
+            background: #1a3816 !important;
+        }
+        .fusion-builder-row-4::before {
+            content: "" !important;
             position: absolute !important;
-            top: 0;
-            left: 0;
+            top: 0 !important;
+            left: 0 !important;
             width: 100% !important;
             height: 100% !important;
-            overflow: hidden !important;
+            background: linear-gradient(180deg, rgba(16, 32, 14, 0.35) 0%, rgba(16, 32, 14, 0.58) 100%) !important;
             z-index: 1 !important;
             pointer-events: none !important;
         }
+        .fusion-builder-row-4 .awb-background-slider,
+        .awb-background-slider {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            z-index: 0 !important;
+            pointer-events: none !important;
+            mix-blend-mode: normal !important;
+        }
+        .fusion-builder-row-4 .awb-background-slider .swiper-wrapper,
         .awb-background-slider .swiper-wrapper {
             position: relative !important;
             width: 100% !important;
             height: 100% !important;
             display: block !important;
         }
+        .fusion-builder-row-4 .awb-background-slider .swiper-slide,
         .awb-background-slider .swiper-slide {
             position: absolute !important;
-            top: 0;
-            left: 0;
+            top: 0 !important;
+            left: 0 !important;
             width: 100% !important;
             height: 100% !important;
             opacity: 0;
             transform: scale(1.0);
             transition: opacity 1.8s ease-in-out, transform 7s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
         }
+        /* First slide is visible IMMEDIATELY on render */
+        .fusion-builder-row-4 .awb-background-slider .swiper-slide:first-child,
+        .awb-background-slider .swiper-slide:first-child {
+            opacity: 1 !important;
+        }
+        .fusion-builder-row-4 .awb-background-slider .swiper-slide.is-active,
         .awb-background-slider .swiper-slide.is-active,
         .awb-background-slider .swiper-slide.swiper-slide-active {
             opacity: 1 !important;
             transform: scale(1.08) !important;
         }
+        .fusion-builder-row-4 .awb-background-slider img,
         .awb-background-slider img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
             object-position: center !important;
+            display: block !important;
+        }
+        .fusion-builder-row-4 .fusion-builder-row {
+            position: relative !important;
+            z-index: 2 !important;
         }
 
         /* 3. Gradual Scroll-Down Cascade Reveal ("Hiện ra từ từ khi lướt xuống") */
@@ -555,17 +587,19 @@
 
         $(document).ready(function() {
             // 1. Hero Background Slider Auto-Rotate & Zoom
-            const bgSlides = document.querySelectorAll('.awb-background-slider .swiper-slide');
-            if (bgSlides.length > 0) {
-                let currentSlide = 0;
-                bgSlides[0].classList.add('is-active');
-                
-                if (bgSlides.length > 1) {
-                    setInterval(() => {
-                        bgSlides[currentSlide].classList.remove('is-active');
-                        currentSlide = (currentSlide + 1) % bgSlides.length;
-                        bgSlides[currentSlide].classList.add('is-active');
-                    }, 5000);
+            const heroSlider = document.querySelector('.fusion-builder-row-4 .awb-background-slider');
+            if (heroSlider) {
+                const slides = heroSlider.querySelectorAll('.swiper-slide');
+                if (slides.length > 0) {
+                    slides[0].classList.add('is-active');
+                    if (slides.length > 1) {
+                        let currentSlide = 0;
+                        setInterval(() => {
+                            slides[currentSlide].classList.remove('is-active');
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            slides[currentSlide].classList.add('is-active');
+                        }, 5000);
+                    }
                 }
             }
 
