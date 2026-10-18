@@ -39,4 +39,18 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    /**
+     * Đường dẫn ảnh danh mục
+     */
+    public function getImageUrlAttribute(): string
+    {
+        if (!$this->image) {
+            return asset('wp-content/uploads/sites/186/2023/12/vegan-food-drinks.jpg');
+        }
+        if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
+            return $this->image;
+        }
+        return asset(ltrim($this->image, '/'));
+    }
 }

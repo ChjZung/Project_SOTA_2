@@ -640,10 +640,30 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.25) !important;
             background: #44803f !important;
         }
-        #toTop::before {
-            content: "▲";
-            font-size: 13px;
-            line-height: 1;
+        /* 15. Fix Product Detail Gallery Visibility & Mini Cart */
+        .woocommerce-product-gallery {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .woocommerce-product-gallery__image img {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .mini-cart-item-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2ed;
+        }
+        .mini-cart-item-row img {
+            border-radius: 6px;
+            object-fit: cover;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -906,6 +926,74 @@
                     });
                 } else {
                     menu.css('display', '');
+                }
+            });
+
+            // 8. Global AJAX Add to Cart handler
+            $(document).on('click', '.ajax_add_to_cart, .add_to_cart_button', function(e) {
+                const $btn = $(this);
+                const $form = $btn.closest('form.cart');
+                let productId = $btn.data('product_id') || $btn.attr('data-product_id') || $btn.val();
+                let quantity = 1;
+
+                if ($form.length) {
+                    productId = $form.find('input[name="product_id"]').val() || $form.find('button[name="add-to-cart"]').val() || productId;
+                    quantity = $form.find('input[name="quantity"]').val() || 1;
+                }
+
+                if (!productId) {
+                    const href = $btn.attr('href') || '';
+                    const match = href.match(/add-to-cart=([0-9]+)/);
+                    if (match) productId = match[1];
+                }
+
+                if (productId) {
+                    e.preventDefault();
+                    $btn.addClass('loading');
+
+                    $.ajax({
+                        url: '{{ route("cart.add") }}',
+                        method: 'POST',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            product_id: productId,
+                            quantity: quantity
+                        },
+                        success: function(res) {
+                            $btn.removeClass('loading').addClass('added');
+                            // Update badge counters
+                            $('.fusion-widget-cart-number').text(res.cart_count).show();
+                            $('.fusion-dynamic-cart-count').text(res.cart_count);
+                            
+                            // Render mini cart content
+                            if (res.cart) {
+                                let html = '<div class="mini-cart-items-wrapper" style="max-height: 250px; overflow-y: auto;">';
+                                Object.values(res.cart).forEach(function(item) {
+                                    html += `
+                                        <div class="mini-cart-item-row">
+                                            <img src="${item.image}" alt="${item.name}" width="50" height="50">
+                                            <div style="flex:1;">
+                                                <div style="font-weight:700; font-size:14px; color:#2d5a27;">${item.name}</div>
+                                                <div style="font-size:13px; color:#666;">${item.quantity} × <strong style="color:#2d5a27;">${item.formatted_price}</strong></div>
+                                            </div>
+                                        </div>
+                                    `;
+                                });
+                                html += '</div>';
+                                $('#awb-oc-1369 .widget_shopping_cart_content').html(html);
+                            }
+
+                            // Open off-canvas cart popup
+                            $('#awb-oc-1369').addClass('is-open');
+                        },
+                        error: function(err) {
+                            $btn.removeClass('loading');
+                            console.error('Add to cart failed:', err);
+                            if ($form.length) {
+                                $form.submit();
+                            }
+                        }
+                    });
                 }
             });
         });

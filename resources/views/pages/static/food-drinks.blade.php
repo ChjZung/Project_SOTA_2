@@ -439,7 +439,17 @@
 				
 									</div>
 					</div></div></div></div></div></li>
-</ul><div class="pagination clearfix"><span class="current">1</span><a href="/product-category/food-drinks/page/2/" class="inactive">2</a><a class="pagination-next" rel="next" href="/product-category/food-drinks/page/2/"><span class="page-text">Next</span><span class="page-next"></span></a></div><div class="fusion-clearfix"></div></div></div></div></div></div></div>
+</ul><div class="pagination clearfix">
+    @if(($currentPage ?? 1) == 2)
+        <a class="pagination-prev" rel="prev" href="/product-category/food-drinks"><span class="page-prev"></span><span class="page-text">Previous</span></a>
+        <a href="/product-category/food-drinks" class="inactive">1</a>
+        <span class="current">2</span>
+    @else
+        <span class="current">1</span>
+        <a href="/product-category/food-drinks/page/2" class="inactive">2</a>
+        <a class="pagination-next" rel="next" href="/product-category/food-drinks/page/2"><span class="page-text">Next</span><span class="page-next"></span></a>
+    @endif
+</div><div class="fusion-clearfix"></div></div></div></div></div></div></div>
 		</div>
 	</section>
 						
