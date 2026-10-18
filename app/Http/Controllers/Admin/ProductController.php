@@ -19,7 +19,13 @@ class ProductController extends Controller
      */
     public function index(Request $request): View
     {
-        $query = Product::with('category');
+        $trashedCount = Product::onlyTrashed()->count();
+
+        if ($request->input('filter') === 'trashed') {
+            $query = Product::onlyTrashed()->with('category');
+        } else {
+            $query = Product::with('category');
+        }
 
         if ($request->filled('search')) {
             $search = $request->input('search');
@@ -34,7 +40,7 @@ class ProductController extends Controller
             $query->where('category_id', $request->input('category_id'));
         }
 
-        if ($request->filled('filter')) {
+        if ($request->filled('filter') && $request->input('filter') !== 'trashed') {
             $filter = $request->input('filter');
             if ($filter === 'featured') {
                 $query->where('is_featured', true);
@@ -50,7 +56,7 @@ class ProductController extends Controller
         $products = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();
         $categories = Category::orderBy('name')->get();
 
-        return view('admin.products.index', compact('products', 'categories'));
+        return view('admin.products.index', compact('products', 'categories', 'trashedCount'));
     }
 
     /**
@@ -243,6 +249,31 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')
-            ->with('success', "Đã xóa sản phẩm '{$name}' thành công!");
+            ->with('success', "Đã chuyển sản phẩm '{$name}' vào thùng rác (xóa mềm)!");
+    }
+
+    /**
+     * Khôi phục sản phẩm từ thùng rác.
+     */
+    public function restore(int|string $id): RedirectResponse
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $product->restore();
+
+        return redirect()->route('admin.products.index', ['filter' => 'trashed'])
+            ->with('success', "Khôi phục sản phẩm '{$product->name}' thành công!");
+    }
+
+    /**
+     * Xóa vĩnh viễn sản phẩm khỏi hệ thống.
+     */
+    public function forceDelete(int|string $id): RedirectResponse
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $name = $product->name;
+        $product->forceDelete();
+
+        return redirect()->route('admin.products.index', ['filter' => 'trashed'])
+            ->with('success', "Đã xóa vĩnh viễn sản phẩm '{$name}' khỏi cơ sở dữ liệu!");
     }
 }

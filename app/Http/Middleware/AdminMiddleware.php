@@ -25,6 +25,11 @@ class AdminMiddleware
             return redirect()->route('admin.login')->with('error', 'Tài khoản của bạn không có quyền quản trị.');
         }
 
+        if (!Auth::user()->isActive()) {
+            Auth::logout();
+            return redirect()->route('admin.login')->with('error', 'Tài khoản quản trị của bạn đã bị khóa.');
+        }
+
         return $next($request);
     }
 }

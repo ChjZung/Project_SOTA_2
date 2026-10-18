@@ -265,8 +265,48 @@
                     <span>Danh Mục</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.coupons.index') }}" class="sidebar-link {{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}">
+                    <i class="bi bi-ticket-perforated-fill"></i>
+                    <span>Mã Giảm Giá</span>
+                </a>
+            </li>
 
-            <li class="sidebar-header">Nội Dung</li>
+            <li class="sidebar-header">Khách Hàng & Phản Hồi</li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.customers.index') }}" class="sidebar-link {{ request()->routeIs('admin.customers.*') ? 'active' : '' }}">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Khách Hàng</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.reviews.index') }}" class="sidebar-link {{ request()->routeIs('admin.reviews.*') ? 'active' : '' }}">
+                    <i class="bi bi-star-fill"></i>
+                    <span>Đánh Giá SP</span>
+                    @php $pendingReviewCount = \App\Models\Review::where('is_approved', false)->count(); @endphp
+                    @if($pendingReviewCount > 0)
+                        <span class="badge bg-warning text-dark rounded-pill ms-auto">{{ $pendingReviewCount }}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.inquiries.index') }}" class="sidebar-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Hộp Thư Liên Hệ</span>
+                    @php $newInquiryCount = \App\Models\Inquiry::where('status', 'new')->count(); @endphp
+                    @if($newInquiryCount > 0)
+                        <span class="badge bg-danger rounded-pill ms-auto">{{ $newInquiryCount }}</span>
+                    @endif
+                </a>
+            </li>
+
+            <li class="sidebar-header">Nội Dung & Giao Diện</li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.banners.index') }}" class="sidebar-link {{ request()->routeIs('admin.banners.*') ? 'active' : '' }}">
+                    <i class="bi bi-images"></i>
+                    <span>Banner Slider</span>
+                </a>
+            </li>
             <li class="sidebar-item">
                 <a href="{{ route('admin.posts.index') }}" class="sidebar-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
                     <i class="bi bi-newspaper"></i>
@@ -275,6 +315,12 @@
             </li>
 
             <li class="sidebar-header">Hệ Thống</li>
+            <li class="sidebar-item">
+                <a href="{{ route('admin.settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Cài Đặt Website</span>
+                </a>
+            </li>
             <li class="sidebar-item">
                 <a href="{{ route('home') }}" target="_blank" class="sidebar-link">
                     <i class="bi bi-box-arrow-up-right"></i>
@@ -322,7 +368,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2 mt-2">
                     <li><h6 class="dropdown-header">Tài khoản quản trị</h6></li>
-                    <li><a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}"><i class="bi bi-person me-2"></i> Thông Tin Quản Trị</a></li>
+                    <li><a class="dropdown-item py-2" href="{{ route('admin.profile.edit') }}"><i class="bi bi-person-gear me-2"></i> Hồ Sơ & Mật Khẩu</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <button class="dropdown-item py-2 text-danger" onclick="document.getElementById('logoutForm').submit();">

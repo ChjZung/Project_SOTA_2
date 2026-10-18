@@ -20,7 +20,9 @@
             <select name="status" class="form-select">
                 <option value="">-- Tất cả trạng thái --</option>
                 <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Chờ xác nhận (Pending)</option>
-                <option value="processing" {{ request('status') === 'processing' ? 'selected' : '' }}>Đang xử lý/giao hàng (Processing)</option>
+                <option value="confirmed" {{ request('status') === 'confirmed' ? 'selected' : '' }}>Đã xác nhận (Confirmed)</option>
+                <option value="processing" {{ request('status') === 'processing' ? 'selected' : '' }}>Đang chuẩn bị (Processing)</option>
+                <option value="shipped" {{ request('status') === 'shipped' ? 'selected' : '' }}>Đang giao hàng (Shipped)</option>
                 <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>Đã hoàn thành (Completed)</option>
                 <option value="cancelled" {{ request('status') === 'cancelled' ? 'selected' : '' }}>Đã hủy (Cancelled)</option>
             </select>
@@ -94,15 +96,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($order->status === 'completed')
-                                <span class="badge bg-success">Hoàn thành</span>
-                            @elseif($order->status === 'processing')
-                                <span class="badge bg-primary">Đang giao</span>
-                            @elseif($order->status === 'cancelled')
-                                <span class="badge bg-danger">Đã hủy</span>
-                            @else
-                                <span class="badge bg-warning text-dark">Chờ xác nhận</span>
-                            @endif
+                            {!! $order->status_badge !!}
                         </td>
                         <td class="text-muted small">
                             {{ $order->created_at->format('d/m/Y H:i') }}

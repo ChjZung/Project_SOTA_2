@@ -40,7 +40,23 @@ class AuthController extends Controller
 
         $remember = $request->boolean('remember');
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'role' => 'admin'], $remember)) {
+        $user = \App\Models\User::where('email', $credentials['email'])
+            ->where('role', 'admin')
+            ->first();
+
+        if ($user && !\Illuminate\Support\Facades\Hash::check($credentials['password'], $user->password)) {
+            return back()->withErrors([
+                'email' => 'Mật khẩu quản trị viên không chính xác.',
+            ])->onlyInput('email');
+        }
+
+        if ($user && !$user->isActive()) {
+            return back()->withErrors([
+                'email' => 'Tài khoản quản trị của bạn đã bị khóa hoặc ngừng kích hoạt.',
+            ])->onlyInput('email');
+        }
+
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'role' => 'admin', 'is_active' => true], $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('admin.dashboard'))
