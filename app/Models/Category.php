@@ -13,8 +13,25 @@ class Category extends Model
 {
     use HasFactory;
 
-    // Các cột được phép gán giá trị hàng loạt (Mass Assignment Protection)
-    protected $fillable = ['parent_id', 'name', 'slug', 'description', 'image', 'sort_order'];
+    protected $fillable = [
+        'parent_id',
+        'name',
+        'slug',
+        'description',
+        'image',
+        'sort_order',
+        'is_active',
+        'meta_title',
+        'meta_description',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'sort_order' => 'integer',
+        ];
+    }
 
     /**
      * Quan hệ 1-N ngược: Danh mục này thuộc về 1 Danh mục cha
@@ -38,6 +55,14 @@ class Category extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    /**
+     * Scope chỉ lấy danh mục đang hoạt động
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
     }
 
     /**

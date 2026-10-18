@@ -7,11 +7,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'category_id',
@@ -28,12 +30,16 @@ class Product extends Model
         'is_featured',
         'is_deal',
         'sales_count',
+        'avg_rating',
+        'meta_title',
+        'meta_description',
         'is_active',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
         'sale_price' => 'decimal:2',
+        'avg_rating' => 'decimal:2',
         'gallery' => 'array',
         'is_featured' => 'boolean',
         'is_deal' => 'boolean',
@@ -46,6 +52,47 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Quan hệ 1-N: Sản phẩm có nhiều dòng đơn hàng
+     */
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    /**
+     * Quan hệ 1-N: Sản phẩm có nhiều đánh giá
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Quan hệ 1-N: Các đánh giá đã được duyệt hiển thị
+     */
+    public function approvedReviews(): HasMany
+    {
+        return $this->hasMany(Review::class)->where('is_approved', true);
+    }
+
+    /**
+     * Quan hệ 1-N: Nằm trong danh sách yêu thích
+     */
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    /**
+     * Cập nhật điểm đánh giá trung bình từ các review đã duyệt
+     */
+    public function updateAvgRating(): void
+    {
+        $avg = $this->approvedReviews()->avg('rating') ?: 0;
+        $this->update(['avg_rating' => round((float) $avg, 2)]);
     }
 
     /**

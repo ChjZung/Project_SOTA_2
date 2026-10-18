@@ -16,6 +16,7 @@ class OrderItem extends Model
         'order_id',
         'product_id',
         'product_name',
+        'product_image',
         'price',
         'quantity',
         'total',
@@ -45,5 +46,16 @@ class OrderItem extends Model
     public function getSubtotalAttribute(): float
     {
         return (float) $this->total;
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        if (!$this->product_image) {
+            return asset('wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg');
+        }
+        if (str_starts_with($this->product_image, 'http://') || str_starts_with($this->product_image, 'https://')) {
+            return $this->product_image;
+        }
+        return asset(ltrim($this->product_image, '/'));
     }
 }

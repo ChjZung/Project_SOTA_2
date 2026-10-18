@@ -20,6 +20,8 @@ class Post extends Model
         'excerpt',
         'content',
         'category',
+        'meta_title',
+        'meta_description',
         'is_published',
     ];
 
@@ -30,6 +32,14 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    /**
+     * Scope: bài viết đã xuất bản
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
     }
 
     /**

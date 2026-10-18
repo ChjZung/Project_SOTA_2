@@ -30,14 +30,18 @@ class DatabaseSeeder extends Seeder
                 'role' => 'admin',
                 'phone' => '0901234567',
                 'address' => 'Hồ Chí Minh, Việt Nam',
+                'is_active' => true,
                 'email_verified_at' => now(),
             ]
         );
 
-        // 2. Chạy Seeder Danh mục & Sản phẩm
+        // 2. Chạy các Seeder theo thứ tự
         $this->call([
             CategorySeeder::class,
             ProductSeeder::class,
+            BannerSeeder::class,
+            CouponSeeder::class,
+            SettingSeeder::class,
         ]);
 
         // 3. Tạo Bài viết tin tức mẫu (Vegan News & Articles)
@@ -88,7 +92,7 @@ class DatabaseSeeder extends Seeder
 
         if ($product1 && $product2) {
             $order1 = Order::updateOrCreate(
-                ['order_code' => 'VS-20261018-001'],
+                ['order_code' => 'VS-20261018-A3xK'],
                 [
                     'user_id' => null,
                     'customer_name' => 'Nguyễn Văn An',
@@ -110,6 +114,7 @@ class DatabaseSeeder extends Seeder
                 'product_id' => $product1->id,
             ], [
                 'product_name' => $product1->name,
+                'product_image' => $product1->image,
                 'price' => $product1->final_price,
                 'quantity' => 2,
                 'total' => $product1->final_price * 2,
@@ -120,6 +125,7 @@ class DatabaseSeeder extends Seeder
                 'product_id' => $product2->id,
             ], [
                 'product_name' => $product2->name,
+                'product_image' => $product2->image,
                 'price' => $product2->final_price,
                 'quantity' => 1,
                 'total' => $product2->final_price,
@@ -128,7 +134,7 @@ class DatabaseSeeder extends Seeder
 
         if ($product3) {
             $order2 = Order::updateOrCreate(
-                ['order_code' => 'VS-20261017-002'],
+                ['order_code' => 'VS-20261017-B9zP'],
                 [
                     'user_id' => null,
                     'customer_name' => 'Trần Thị Mai',
@@ -141,6 +147,7 @@ class DatabaseSeeder extends Seeder
                     'total' => 23.00,
                     'payment_method' => 'bank_transfer',
                     'payment_status' => 'paid',
+                    'paid_at' => now()->subDay(),
                     'status' => 'completed',
                 ]
             );
@@ -150,6 +157,7 @@ class DatabaseSeeder extends Seeder
                 'product_id' => $product3->id,
             ], [
                 'product_name' => $product3->name,
+                'product_image' => $product3->image,
                 'price' => $product3->final_price,
                 'quantity' => 2,
                 'total' => $product3->final_price * 2,
