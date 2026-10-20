@@ -9,6 +9,21 @@
 
     <title>@yield('title', 'Avada Vegan Store - 100% Plant-Based & Organic Store')</title>
     <meta name="description" content="@yield('description', 'A Customizable Pre-built Vegan Store Styled Website. 100% Organic, Vegan & Plant-Based Products with Fast Delivery.')">
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:title" content="@yield('title', 'Avada Vegan Store - 100% Plant-Based & Organic Store')" />
+    <meta property="og:description" content="@yield('description', 'A Customizable Pre-built Vegan Store Styled Website. 100% Organic, Vegan & Plant-Based Products with Fast Delivery.')" />
+    <meta property="og:image" content="@yield('og_image', asset('wp-content/uploads/sites/186/2023/12/hero-image-1.jpg'))" />
+    <meta property="og:site_name" content="Avada Vegan Store" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@yield('title', 'Avada Vegan Store - 100% Plant-Based & Organic Store')" />
+    <meta name="twitter:description" content="@yield('description', 'A Customizable Pre-built Vegan Store Styled Website. 100% Organic, Vegan & Plant-Based Products with Fast Delivery.')" />
+    <meta name="twitter:image" content="@yield('og_image', asset('wp-content/uploads/sites/186/2023/12/hero-image-1.jpg'))" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('wp-content/uploads/sites/186/2024/02/favicon-2.png') }}" type="image/x-icon" />

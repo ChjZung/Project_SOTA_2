@@ -66,18 +66,17 @@ class OrderController extends Controller
     {
         $validated = $request->validate([
             'status' => ['required', 'in:pending,confirmed,processing,shipped,completed,cancelled'],
-            'payment_status' => ['required', 'in:unpaid,paid,refunded'],
+            'payment_status' => ['nullable', 'in:unpaid,paid,refunded'],
             'admin_note' => ['nullable', 'string', 'max:1000'],
             'notes' => ['nullable', 'string', 'max:1000'],
         ], [
             'status.required' => 'Vui lòng chọn trạng thái đơn hàng.',
             'status.in' => 'Trạng thái đơn hàng không hợp lệ.',
-            'payment_status.required' => 'Vui lòng chọn trạng thái thanh toán.',
         ]);
 
         $currentStatus = $order->status;
         $targetStatus = $validated['status'];
-        $newPaymentStatus = $validated['payment_status'];
+        $newPaymentStatus = $validated['payment_status'] ?? $order->payment_status;
 
         // 1. Kiểm tra chuyển tiếp trạng thái
         if ($targetStatus !== $currentStatus) {

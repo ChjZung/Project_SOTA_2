@@ -65,6 +65,17 @@ class PageController extends Controller
         $post = Post::where('is_published',true)->where('slug',$slug)->firstOrFail();
         return view('pages.article',compact('post'));
     }
+
+    public function sitemap(): \Illuminate\Http\Response
+    {
+        $products = Product::where('is_active', true)->select('slug', 'updated_at')->get();
+        $categories = Category::where('is_active', true)->select('slug', 'updated_at')->get();
+        $posts = Post::where('is_published', true)->select('slug', 'updated_at')->get();
+
+        $content = view('pages.sitemap', compact('products', 'categories', 'posts'))->render();
+
+        return response($content, 200, ['Content-Type' => 'application/xml; charset=utf-8']);
+    }
     public function handleSlug(string $slug)
     {
         if (in_array($slug,['about-us','about-store'])) return $this->about();
