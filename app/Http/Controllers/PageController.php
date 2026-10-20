@@ -42,7 +42,15 @@ class PageController extends Controller
     }
     public function handleCategory(Request $request, string $slug, ?int $page = null): View
     {
-        Category::where('slug',$slug)->firstOrFail();
+        $normalized = match ($slug) {
+            'vegan-food-drinks' => 'food-drinks',
+            'vegan-grocery-items' => 'grocery',
+            'vegan-diet-nutrition' => 'fitness-nutrition',
+            'vegan-beauty-care' => 'beauty-care',
+            default => $slug,
+        };
+        Category::where('slug', $normalized)->firstOrFail();
+        $request->route()->setParameter('slug', $normalized);
         return $this->shop($request, $page);
     }
     public function cart(StoreCart $cart): View { return view('pages.cart', ['quote'=>$cart->quote()]); }
