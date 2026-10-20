@@ -154,8 +154,22 @@ class Product extends Model
             return asset($image);
         }
         $mapped = config('product_images.'.$this->slug);
-        return $mapped && is_file(public_path($mapped))
-            ? asset($mapped)
+        if ($mapped && is_file(public_path($mapped))) {
+            return asset($mapped);
+        }
+
+        $categoryDefaults = [
+            1 => 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg',
+            2 => 'wp-content/uploads/sites/186/2023/12/vegan-grocery-items.jpg',
+            3 => 'assets/images/products/organic-multivitamin-jar.webp',
+            4 => 'wp-content/uploads/sites/186/2023/12/beauty-cosmetic-body-lotion.jpg',
+            5 => 'wp-content/uploads/sites/186/2023/12/accessories-leather-bag-1.jpg',
+            6 => 'wp-content/uploads/sites/186/2023/12/pet-dog-treats.jpg',
+        ];
+
+        $fallback = $categoryDefaults[$this->category_id ?? 1] ?? 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg';
+        return is_file(public_path($fallback))
+            ? asset($fallback)
             : asset('assets/images/product-placeholder.svg');
     }
 

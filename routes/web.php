@@ -88,7 +88,7 @@ Route::get('/recipe/{slug}', [PageController::class, 'handleRecipe'])->name('rec
 Route::prefix('admin')->name('admin.')->group(function () {
     // Auth Admin
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
+    Route::post('/login', [AdminAuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     // Khu vực được bảo vệ bởi AdminMiddleware

@@ -104,7 +104,7 @@
                 @forelse($products as $product)
                     <tr class="{{ $product->trashed() ? 'table-light text-muted' : '' }}">
                         <td>
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="admin-product-image" width="72" height="72" onerror="this.onerror=null;this.src='{{ asset('assets/images/product-placeholder.svg') }}';">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="admin-product-image" width="72" height="72" onerror="this.onerror=null;this.src='{{ asset('wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg') }}';">
                         </td>
                         <td>
                             <div class="fw-bold text-dark">

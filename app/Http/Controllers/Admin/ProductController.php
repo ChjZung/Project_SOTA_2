@@ -121,6 +121,16 @@ class ProductController extends Controller
             $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/products'), $filename);
             $imagePath = 'uploads/products/' . $filename;
+        } else {
+            $categoryImages = [
+                1 => 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg',
+                2 => 'wp-content/uploads/sites/186/2023/12/vegan-grocery-items.jpg',
+                3 => 'assets/images/products/organic-multivitamin-jar.webp',
+                4 => 'wp-content/uploads/sites/186/2023/12/beauty-cosmetic-body-lotion.jpg',
+                5 => 'wp-content/uploads/sites/186/2023/12/accessories-leather-bag-1.jpg',
+                6 => 'wp-content/uploads/sites/186/2023/12/pet-dog-treats.jpg',
+            ];
+            $imagePath = $categoryImages[$validated['category_id']] ?? 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg';
         }
 
         // Xử lý thư viện ảnh (gallery)
@@ -205,6 +215,16 @@ class ProductController extends Controller
             $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/products'), $filename);
             $imagePath = 'uploads/products/' . $filename;
+        } elseif (empty($imagePath)) {
+            $categoryImages = [
+                1 => 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg',
+                2 => 'wp-content/uploads/sites/186/2023/12/vegan-grocery-items.jpg',
+                3 => 'assets/images/products/organic-multivitamin-jar.webp',
+                4 => 'wp-content/uploads/sites/186/2023/12/beauty-cosmetic-body-lotion.jpg',
+                5 => 'wp-content/uploads/sites/186/2023/12/accessories-leather-bag-1.jpg',
+                6 => 'wp-content/uploads/sites/186/2023/12/pet-dog-treats.jpg',
+            ];
+            $imagePath = $categoryImages[$validated['category_id']] ?? 'wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg';
         }
 
         // Gallery
