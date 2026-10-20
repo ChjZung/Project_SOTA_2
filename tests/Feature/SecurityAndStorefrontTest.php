@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class Phase8SecurityAndStorefrontTest extends TestCase
+class SecurityAndStorefrontTest extends TestCase
 {
     /**
      * Test 1: Khách hàng không thể xem đơn hàng của khách hàng khác (Phân quyền dữ liệu)

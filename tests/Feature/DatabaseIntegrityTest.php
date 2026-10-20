@@ -19,7 +19,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
-class Phase1DatabaseTest extends TestCase
+class DatabaseIntegrityTest extends TestCase
 {
     /**
      * Test 1: Kiểm tra đủ 12 bảng nghiệp vụ trong CSDL

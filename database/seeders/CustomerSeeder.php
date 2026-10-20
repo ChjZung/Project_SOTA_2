@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class Phase2And3Seeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     public function run(): void
     {

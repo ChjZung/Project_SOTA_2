@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use Tests\TestCase;
 
-class VeganStoreDayOneTest extends TestCase
+class CartAndCatalogTest extends TestCase
 {
     /**
      * Test 1: Kiểm tra trang chủ và danh mục tải thành công

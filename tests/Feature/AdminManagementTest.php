@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class Phase2And3AdminTest extends TestCase
+class AdminManagementTest extends TestCase
 {
     private User $admin;
 

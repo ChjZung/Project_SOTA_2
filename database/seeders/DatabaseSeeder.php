@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             BannerSeeder::class,
             CouponSeeder::class,
             SettingSeeder::class,
+            CustomerSeeder::class,
         ]);
 
         // 3. Tạo Bài viết tin tức mẫu (Vegan News & Articles)

@@ -59,10 +59,26 @@ composer install
 # 2. Tạo khóa mã hóa ứng dụng (App Key)
 php artisan key:generate
 
-# 3. Khởi động máy chủ phát triển
-php artisan serve --port=8000
+# 3. Chạy di chuyển CSDL và nạp dữ liệu mẫu
+php artisan migrate --seed
+
+# 4. Khởi động máy chủ phát triển
+php artisan serve
 ```
-Truy cập hệ thống tại: `http://127.0.0.1:8000` hoặc qua Virtual Host của Laragon `http://project_sota_2.test`.
+Truy cập hệ thống tại: `http://127.0.0.1:8000` (hoặc cổng hiển thị trên terminal).
+
+### 🔑 Tài khoản mặc định
+
+| Vai trò | Email | Mật khẩu | URL truy cập |
+| :--- | :--- | :--- | :--- |
+| **Quản trị viên (Admin)** | `admin@veganstore.vn` | `Admin@123456` | `/admin/login` |
+| **Khách hàng mẫu (Customer)** | `lannguyen@gmail.com` | `Customer@123` | `/login` |
+
+### 🧪 Chạy kiểm thử tự động (Unit / Feature Tests)
+
+```bash
+php vendor/bin/phpunit
+```
 
 ---
 
