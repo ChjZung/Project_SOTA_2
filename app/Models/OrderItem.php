@@ -20,12 +20,14 @@ class OrderItem extends Model
         'price',
         'quantity',
         'total',
+        'options',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
         'total' => 'decimal:2',
         'quantity' => 'integer',
+        'options' => 'array',
     ];
 
     public function order(): BelongsTo

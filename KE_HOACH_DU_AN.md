@@ -1,3 +1,5 @@
+> Cập nhật GĐ5–7: đã triển khai theo phạm vi demo, bỏ Gmail/SMTP và phần bảo mật nâng cao theo yêu cầu. Đã qua 61 kiểm tra HTTP/trình duyệt trên database thử nghiệm riêng. Xem `HUONG_DAN_DEMO_GIAI_DOAN_5_6_7.md`.
+
 # Kế Hoạch Triển Khai Toàn Diện Dự Án Website Avada Vegan Store
 
 **Mã dự án**: `Project_SOTA_2`  
@@ -740,17 +742,17 @@ stateDiagram-v2
 | 11 | Quản lý Mã giảm giá (Admin) | 1 | 3 | P1 | ✅ Đã hoàn thành |
 | 12 | Quản lý Đánh giá (Admin) | 1 | 3 | P1 | ✅ Đã hoàn thành |
 | 13 | Cài đặt Website (Admin) | 1 | 3 | P1 | ✅ Đã hoàn thành |
-| 14 | Customer Auth (Đăng ký/Đăng nhập) | 2 | 4 | P0 | 🆕 |
-| 15 | My Account (Hồ sơ + Lịch sử đơn) | 2 | 4 | P0 | 🆕 |
+| 14 | Customer Auth (Đăng ký/Đăng nhập) | 2 | 4 | P0 | ✅ Demo: đăng ký/đăng nhập |
+| 15 | My Account (Hồ sơ + Lịch sử đơn) | 2 | 4 | P0 | ✅ Demo: hồ sơ và lịch sử đơn |
 | 16 | Wishlist | 2 | 4 | P2 | 🆕 Dời nếu hết thời gian |
-| 17 | Giỏ hàng AJAX | 2 | 5 | P0 | ✅ Cần kiểm tra |
-| 18 | Áp dụng Coupon tại Cart | 2 | 5 | P1 | 🆕 |
-| 19 | Checkout & Đặt hàng (toàn vẹn DL) | 2 | 5 | P0 | 🆕 |
-| 20 | Contact Form Frontend | 2 | 5 | P0 | 🆕 |
-| 21 | Động hóa Frontend | 2 | 6 | P0 | 🆕 |
-| 22 | Trang Tìm kiếm | 2 | 7 | P1 | 🆕 |
-| 23 | Đánh giá SP Frontend | 2 | 7 | P1 | 🆕 |
-| 24 | Email thông báo | 2 | 7 | P1 | 🆕 |
+| 17 | Giỏ hàng AJAX | 2 | 5 | P0 | ✅ Đã kiểm tra |
+| 18 | Áp dụng Coupon tại Cart | 2 | 5 | P1 | ✅ Đã hoàn thành |
+| 19 | Checkout & Đặt hàng (toàn vẹn DL) | 2 | 5 | P0 | ✅ Đã hoàn thành |
+| 20 | Contact Form Frontend | 2 | 5 | P0 | ✅ Đã hoàn thành |
+| 21 | Động hóa Frontend | 2 | 6 | P0 | ✅ Đã hoàn thành |
+| 22 | Trang Tìm kiếm | 2 | 7 | P1 | ✅ Đã hoàn thành |
+| 23 | Đánh giá SP Frontend | 2 | 7 | P1 | ✅ Đã hoàn thành |
+| 24 | Email thông báo | 2 | 7 | P1 | ⏭ Bỏ theo yêu cầu demo, không Gmail/SMTP |
 | 25 | Bảo mật & Phân quyền | 2 | 8 | P0 | 🆕 |
 | 26 | Feature Tests | 2 | 8 | P0 | 🔄 Cần mở rộng |
 | 27 | SEO | 2 | 8 | P2 | 🆕 Dời nếu hết thời gian |

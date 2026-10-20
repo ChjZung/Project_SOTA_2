@@ -107,6 +107,7 @@
                     <td class="text-center">{{ $idx + 1 }}</td>
                     <td>
                         <div class="fw-bold">{{ $item->product_name }}</div>
+                        @if($item->options)<div class="small">{{ implode(' / ', $item->options) }}</div>@endif
                         @if($item->product && $item->product->product_code)
                             <small class="text-muted">SKU: {{ $item->product->product_code }}</small>
                         @endif

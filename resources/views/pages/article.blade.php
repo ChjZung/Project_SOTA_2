@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title',$post->title.' - Vegan Store')
+@section('content')<main id="main" class="commerce-page article-page"><a href="{{ route('news') }}">← All articles</a><div class="commerce-heading"><p class="commerce-eyebrow">{{ $post->category }} · {{ $post->created_at->format('d M Y') }}</p><h1>{{ $post->title }}</h1><p>{{ $post->excerpt }}</p></div><img class="article-cover" src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"><article class="article-body">{!! strip_tags($post->content, '<p><br><h2><h3><h4><ul><ol><li><strong><em><blockquote>') !!}</article><a href="{{ route('news') }}">More news & recipes →</a></main>@endsection

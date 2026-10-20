@@ -90,7 +90,7 @@ class PostController extends Controller
             'excerpt' => $validated['excerpt'] ?? null,
             'content' => $validated['content'],
             'thumbnail' => $thumbnailPath,
-            'is_published' => $request->boolean('is_published', true),
+            'is_published' => $request->boolean('is_published'),
         ]);
 
         return redirect()->route('admin.posts.index')
@@ -141,7 +141,7 @@ class PostController extends Controller
             'excerpt' => $validated['excerpt'] ?? null,
             'content' => $validated['content'],
             'thumbnail' => $thumbnailPath,
-            'is_published' => $request->boolean('is_published', true),
+            'is_published' => $request->boolean('is_published'),
         ]);
 
         return redirect()->route('admin.posts.index')

@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title', 'Quản Lý Sản Phẩm')
+@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/admin-product-images.css') }}">@endpush
 
 @section('content')
 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-3">
@@ -89,7 +90,7 @@
         <table class="table align-middle table-hover">
             <thead>
                 <tr>
-                    <th style="width: 70px;">Ảnh</th>
+                    <th style="width: 96px;">Ảnh</th>
                     <th>Sản Phẩm & Mã</th>
                     <th>Danh Mục</th>
                     <th>Giá Bán</th>
@@ -103,7 +104,7 @@
                 @forelse($products as $product)
                     <tr class="{{ $product->trashed() ? 'table-light text-muted' : '' }}">
                         <td>
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="rounded-2 object-fit-cover" width="52" height="52">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="admin-product-image" width="72" height="72" onerror="this.onerror=null;this.src='{{ asset('assets/images/product-placeholder.svg') }}';">
                         </td>
                         <td>
                             <div class="fw-bold text-dark">

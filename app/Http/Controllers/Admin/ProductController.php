@@ -85,6 +85,10 @@ class ProductController extends Controller
             'description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:3072'],
             'gallery.*' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:3072'],
+            'variations' => ['nullable', 'array', 'max:50'],
+            'variations.*.attributes' => ['required', 'array'],
+            'variations.*.attributes.*' => ['required', 'string', 'max:80'],
+            'variations.*.price' => ['required', 'numeric', 'min:0'],
             'is_featured' => ['nullable', 'boolean'],
             'is_deal' => ['nullable', 'boolean'],
             'is_active' => ['nullable', 'boolean'],
@@ -141,9 +145,10 @@ class ProductController extends Controller
             'description' => $validated['description'] ?? null,
             'image' => $imagePath,
             'gallery' => !empty($galleryPaths) ? $galleryPaths : null,
+            'variations' => $validated['variations'] ?? null,
             'is_featured' => $request->boolean('is_featured'),
             'is_deal' => $request->boolean('is_deal'),
-            'is_active' => $request->boolean('is_active', true),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.products.index')
@@ -176,6 +181,10 @@ class ProductController extends Controller
             'description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:3072'],
             'gallery.*' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:3072'],
+            'variations' => ['nullable', 'array', 'max:50'],
+            'variations.*.attributes' => ['required', 'array'],
+            'variations.*.attributes.*' => ['required', 'string', 'max:80'],
+            'variations.*.price' => ['required', 'numeric', 'min:0'],
             'is_featured' => ['nullable', 'boolean'],
             'is_deal' => ['nullable', 'boolean'],
             'is_active' => ['nullable', 'boolean'],
@@ -220,9 +229,10 @@ class ProductController extends Controller
             'description' => $validated['description'] ?? null,
             'image' => $imagePath,
             'gallery' => !empty($galleryPaths) ? $galleryPaths : null,
+            'variations' => $validated['variations'] ?? $product->variations,
             'is_featured' => $request->boolean('is_featured'),
             'is_deal' => $request->boolean('is_deal'),
-            'is_active' => $request->boolean('is_active', true),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.products.index')

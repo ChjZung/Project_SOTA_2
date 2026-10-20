@@ -1,156 +1,33 @@
 <?php
-
-declare(strict_types=1);
-
 namespace App\Http\Controllers;
-
-use App\Models\Product;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
+use App\Models\{Coupon, Product};
+use App\Services\StoreCart;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-
 class CartController extends Controller
 {
-    /**
-     * Thêm sản phẩm vào giỏ hàng (hỗ trợ cả AJAX và Form Submit).
-     */
-    public function add(Request $request): JsonResponse|RedirectResponse
+    public function add(Request $request, StoreCart $cart)
     {
-        $productId = (int) ($request->input('product_id') ?? $request->input('add-to-cart'));
-        $quantity = max(1, (int) $request->input('quantity', 1));
-
-        if (!$productId) {
-            if ($request->expectsJson() || $request->ajax()) {
-                return response()->json(['success' => false, 'message' => 'Không tìm thấy sản phẩm.'], 400);
-            }
-            return back()->with('error', 'Không tìm thấy sản phẩm.');
-        }
-
-        $product = Product::find($productId);
-
-        if (!$product) {
-            if ($request->expectsJson() || $request->ajax()) {
-                return response()->json(['success' => false, 'message' => 'Sản phẩm không tồn tại.'], 404);
-            }
-            return back()->with('error', 'Sản phẩm không tồn tại.');
-        }
-
-        $cart = session()->get('cart', []);
-
-        $price = (float) $product->final_price;
-
-        if (isset($cart[$productId])) {
-            $cart[$productId]['quantity'] += $quantity;
-        } else {
-            $cart[$productId] = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'slug' => $product->slug,
-                'price' => $price,
-                'formatted_price' => '$' . number_format($price, 2),
-                'image' => $product->image_url,
-                'quantity' => $quantity,
-            ];
-        }
-
-        session()->put('cart', $cart);
-
-        $cartCount = array_sum(array_column($cart, 'quantity'));
-        $cartTotal = array_reduce($cart, fn ($sum, $item) => $sum + ($item['price'] * $item['quantity']), 0);
-
-        if ($request->expectsJson() || $request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Product has been added to your cart.',
-                'cart_count' => $cartCount,
-                'cart_total' => $cartTotal,
-                'formatted_total' => '$' . number_format($cartTotal, 2),
-                'cart' => $cart,
-            ]);
-        }
-
-        return back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
+        $data=$request->validate(['quantity'=>'sometimes|integer|min:1|max:99','slug'=>'nullable|string|max:150','options'=>'sometimes|array','options.*'=>'string|max:80']);
+        $product=$request->filled('slug')?Product::where('slug',$data['slug'])->firstOrFail():Product::findOrFail($request->input('product_id',$request->input('add-to-cart')));
+        $quote=$cart->add($product,(int)($data['quantity']??1),$data['options']??[]);
+        return $request->expectsJson()?response()->json(['success'=>true]+$quote):back()->with('success','Product added to cart.');
     }
-
-    /**
-     * Cập nhật số lượng sản phẩm trong giỏ hàng.
-     */
-    public function update(Request $request): JsonResponse|RedirectResponse
+    public function update(Request $request, StoreCart $service)
     {
-        $productId = (int) $request->input('product_id');
-        $quantity = (int) $request->input('quantity', 1);
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$productId])) {
-            if ($quantity <= 0) {
-                unset($cart[$productId]);
-            } else {
-                $cart[$productId]['quantity'] = $quantity;
-            }
-            session()->put('cart', $cart);
-        }
-
-        $cartCount = array_sum(array_column($cart, 'quantity'));
-        $cartTotal = array_reduce($cart, fn ($sum, $item) => $sum + ($item['price'] * $item['quantity']), 0);
-
-        if ($request->expectsJson() || $request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'cart_count' => $cartCount,
-                'cart_total' => $cartTotal,
-                'formatted_total' => '$' . number_format($cartTotal, 2),
-            ]);
-        }
-
-        return redirect()->route('cart')->with('success', 'Đã cập nhật giỏ hàng.');
+        $data=$request->validate(['product_id'=>'required','quantity'=>'required|integer|min:0|max:99']);$cart=session('cart',[]);$key=(string)$data['product_id'];
+        if(isset($cart[$key])){if((int)$data['quantity']===0)unset($cart[$key]);else $cart[$key]['quantity']=(int)$data['quantity'];$before=session('cart',[]);session(['cart'=>$cart]);try{$service->quote(true);}catch(\Illuminate\Validation\ValidationException $e){session(['cart'=>$before]);throw $e;}}
+        return $request->expectsJson()?response()->json(['success'=>true]+$service->quote()):redirect()->route('cart');
     }
-
-    /**
-     * Xóa sản phẩm khỏi giỏ hàng.
-     */
-    public function remove(Request $request): JsonResponse|RedirectResponse
+    public function remove(Request $request, StoreCart $service)
     {
-        $productId = (int) $request->input('product_id');
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$productId])) {
-            unset($cart[$productId]);
-            session()->put('cart', $cart);
-        }
-
-        $cartCount = array_sum(array_column($cart, 'quantity'));
-        $cartTotal = array_reduce($cart, fn ($sum, $item) => $sum + ($item['price'] * $item['quantity']), 0);
-
-        if ($request->expectsJson() || $request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'cart_count' => $cartCount,
-                'cart_total' => $cartTotal,
-                'formatted_total' => '$' . number_format($cartTotal, 2),
-            ]);
-        }
-
-        return redirect()->route('cart')->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng.');
+        $cart=session('cart',[]);unset($cart[(string)$request->input('product_id')]);session(['cart'=>$cart]);return $request->expectsJson()?response()->json(['success'=>true]+$service->quote()):redirect()->route('cart');
     }
-
-    /**
-     * Lấy dữ liệu giỏ hàng hiện tại (Mini-cart AJAX).
-     */
-    public function getMiniCart(): JsonResponse
+    public function getMiniCart(StoreCart $service){return response()->json(['success'=>true]+$service->quote());}
+    public function applyCoupon(Request $request,StoreCart $service)
     {
-        $cart = session()->get('cart', []);
-        $cartCount = array_sum(array_column($cart, 'quantity'));
-        $cartTotal = array_reduce($cart, fn ($sum, $item) => $sum + ($item['price'] * $item['quantity']), 0);
-
-        return response()->json([
-            'success' => true,
-            'cart_count' => $cartCount,
-            'cart_total' => $cartTotal,
-            'formatted_total' => '$' . number_format($cartTotal, 2),
-            'items' => array_values($cart),
-        ]);
+        $data=$request->validate(['code'=>'required|string|max:60']);$quote=$service->quote();$coupon=Coupon::whereRaw('UPPER(code) = ?',[strtoupper(trim($data['code']))])->first();
+        if(!$quote['items']||!$coupon||!$coupon->isValid($quote['subtotal']))return back()->withErrors(['coupon'=>'This code is invalid, expired, or the minimum order has not been reached.']);
+        session(['coupon_code'=>$coupon->code]);return back()->with('success','Discount code applied.');
     }
+    public function removeCoupon(){session()->forget('coupon_code');return back()->with('success','Discount code removed.');}
 }

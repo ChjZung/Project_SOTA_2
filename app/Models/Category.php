@@ -70,12 +70,31 @@ class Category extends Model
      */
     public function getImageUrlAttribute(): string
     {
-        if (!$this->image) {
-            return asset('wp-content/uploads/sites/186/2023/12/vegan-food-drinks.jpg');
+        $image = trim(str_replace('\\', '/', (string) $this->image));
+        if ($image === '') {
+            return $this->fallback_image_url;
         }
-        if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
-            return $this->image;
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
         }
-        return asset(ltrim($this->image, '/'));
+        $image = preg_replace('#^public/#', '', ltrim($image, '/'));
+        return is_file(public_path($image)) ? asset($image) : $this->fallback_image_url;
+    }
+
+    public function getFallbackImageUrlAttribute(): string
+    {
+        $images = [
+            'food-drinks' => 'vegan-food-drinks.jpg',
+            'grocery' => 'vegan-grocery-items.jpg',
+            'vegan-grocery-items' => 'vegan-grocery-items.jpg',
+            'fitness-nutrition' => 'vegan-diet-nutrition.jpg',
+            'beauty-care' => 'vegan-beauty-care.jpg',
+            'pet-care-items' => 'vegan-pet-care-items.jpg',
+            'clothes-accessories' => 'vegan-clothes-accessories.jpg',
+        ];
+
+        return isset($images[$this->slug])
+            ? asset('wp-content/uploads/sites/186/2023/12/'.$images[$this->slug])
+            : asset('assets/images/category-placeholder.svg');
     }
 }

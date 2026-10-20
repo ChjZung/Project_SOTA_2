@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\{AccountController, CustomerAuthController, CheckoutController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +33,31 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Các trang chính
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
+Route::get('/search', [PageController::class, 'shop'])->name('search');
 Route::get('/shop/page/{page}', [PageController::class, 'shop'])->whereNumber('page')->name('shop.page');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'sendContact'])->name('contact.send');
 Route::get('/news-recipes', [PageController::class, 'news'])->name('news');
-Route::get('/my-account', [PageController::class, 'myAccount'])->name('my-account');
+Route::get('/category/{slug}', [PageController::class, 'news'])->name('news.category');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [CustomerAuthController::class, 'loginForm'])->name('login');
+    Route::post('/login', [CustomerAuthController::class, 'login'])->name('login.submit');
+    Route::get('/register', [CustomerAuthController::class, 'registerForm'])->name('register');
+    Route::post('/register', [CustomerAuthController::class, 'register'])->name('register.submit');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/my-account', [AccountController::class, 'index'])->name('my-account');
+    Route::post('/logout', [CustomerAuthController::class, 'logout'])->name('logout');
+    Route::put('/my-account/profile', [AccountController::class, 'profile'])->name('account.profile');
+    Route::put('/my-account/password', [AccountController::class, 'password'])->name('account.password');
+    Route::get('/my-account/orders/{order_code}', [AccountController::class, 'order'])->name('account.order');
+    Route::post('/product/{slug}/reviews', [AccountController::class, 'review'])->name('product.review');
+});
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'place'])->name('checkout.place');
+Route::get('/order-success/{order_code}', [CheckoutController::class, 'success'])->name('order.success');
+Route::post('/cart/coupon', [CartController::class, 'applyCoupon'])->name('cart.coupon');
+Route::post('/cart/coupon/remove', [CartController::class, 'removeCoupon'])->name('cart.coupon.remove');
 
 // Giỏ hàng (Cart)
 Route::get('/cart', [PageController::class, 'cart'])->name('cart');

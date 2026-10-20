@@ -321,6 +321,10 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $prod) {
+            if ($image = config('product_images.'.$prod['slug'])) {
+                $prod['image'] = $image;
+                $prod['gallery'] = [$image];
+            }
             Product::updateOrCreate(
                 ['slug' => $prod['slug']],
                 $prod

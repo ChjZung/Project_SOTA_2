@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Vegan News & Recipes - Vegan Store')
+@section('content')<main id="main" class="commerce-page"><div class="commerce-heading"><p class="commerce-eyebrow">A LITTLE INSPIRATION</p><h1>Vegan News & Articles</h1><p>Good food, fresh ideas and a greener way of life.</p></div><div class="db-article-grid">@forelse($posts as $post)@include('home.article-card')@empty<p>No articles published yet.</p>@endforelse</div><div class="commerce-pagination">@include('components.pagination',['paginator'=>$posts])</div></main>@endsection

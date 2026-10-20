@@ -34,6 +34,7 @@ class Product extends Model
         'meta_title',
         'meta_description',
         'is_active',
+        'variations',
     ];
 
     protected $casts = [
@@ -44,6 +45,7 @@ class Product extends Model
         'is_featured' => 'boolean',
         'is_deal' => 'boolean',
         'is_active' => 'boolean',
+        'variations' => 'array',
     ];
 
     /**
@@ -143,13 +145,18 @@ class Product extends Model
      */
     public function getImageUrlAttribute(): string
     {
-        if (!$this->image) {
-            return asset('wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg');
+        $image = trim(str_replace('\\', '/', (string) $this->image));
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
         }
-        if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
-            return $this->image;
+        $image = preg_replace('#^public/#', '', ltrim($image, '/'));
+        if ($image !== '' && is_file(public_path($image))) {
+            return asset($image);
         }
-        return asset(ltrim($this->image, '/'));
+        $mapped = config('product_images.'.$this->slug);
+        return $mapped && is_file(public_path($mapped))
+            ? asset($mapped)
+            : asset('assets/images/product-placeholder.svg');
     }
 
     /**

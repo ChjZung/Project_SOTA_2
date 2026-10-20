@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ProductSeeder::class,
+            StorefrontCatalogSeeder::class,
             BannerSeeder::class,
             CouponSeeder::class,
             SettingSeeder::class,
@@ -70,7 +71,7 @@ class DatabaseSeeder extends Seeder
                 'author_id' => $admin->id,
                 'title' => 'Vegan Food In 2026: The 50 Best Plant-Based Kitchen Plates',
                 'slug' => 'best-plant-based-plates',
-                'thumbnail' => '/wp-content/uploads/sites/186/2024/01/blog-kids-plates.jpg',
+                'thumbnail' => '/wp-content/uploads/sites/186/2024/02/blog-vegan-food-usa-01.jpg',
                 'excerpt' => 'An insider look at sustainable kitchen culinary trends, plant milk innovations, and eco-friendly packaging.',
                 'content' => '<p>The plant-based movement has matured into an exciting gastronomy revolution. From fermenting artisanal cashew cheeses to pioneering zero-waste pantry storage, here are the top trends defining sustainable kitchens this year.</p>',
                 'category' => 'Lifestyle',

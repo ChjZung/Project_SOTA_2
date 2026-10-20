@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title', 'Quản Lý Danh Mục')
+@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/admin-category-images.css') }}">@endpush
 
 @section('content')
 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-3">
@@ -34,7 +35,7 @@
         <table class="table align-middle table-hover">
             <thead>
                 <tr>
-                    <th style="width: 70px;">Ảnh</th>
+                    <th style="width: 100px;">Ảnh</th>
                     <th>Tên Danh Mục</th>
                     <th>Đường Dẫn (Slug)</th>
                     <th>Số Sản Phẩm</th>
@@ -46,7 +47,9 @@
                 @forelse($categories as $category)
                     <tr>
                         <td>
-                            <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="rounded-circle object-fit-cover" width="48" height="48">
+                            <a href="{{ $category->image_url }}" target="_blank" rel="noopener" class="category-image-link" aria-label="Xem ảnh danh mục {{ $category->name }}">
+                                <img src="{{ $category->image_url }}" alt="{{ $category->name }}" width="76" height="76" loading="lazy" data-fallback="{{ $category->fallback_image_url }}" onerror="this.onerror=null;this.src=this.dataset.fallback;this.parentElement.href=this.dataset.fallback;">
+                            </a>
                         </td>
                         <td>
                             <div class="fw-bold text-dark">{{ $category->name }}</div>

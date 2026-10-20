@@ -25,6 +25,11 @@
     <div class="row g-4">
         <!-- Main Info -->
         <div class="col-lg-8">
+            @if($product->variations)
+            <div class="admin-card mb-4"><h5 class="fw-bold mb-3">Giá theo lựa chọn</h5><p class="text-muted small">Với sản phẩm có lựa chọn, giá dưới đây được dùng trong giỏ hàng và thanh toán.</p>
+                @foreach(old('variations',$product->variations) as $i=>$variation)<div class="row g-2 mb-3 align-items-center"><div class="col-7">{{ implode(' / ',$variation['attributes']) }}@foreach($variation['attributes'] as $key=>$value)<input type="hidden" name="variations[{{ $i }}][attributes][{{ $key }}]" value="{{ $value }}">@endforeach</div><div class="col-5"><label class="small">Giá USD<input class="form-control" type="number" name="variations[{{ $i }}][price]" value="{{ $variation['price'] }}" min="0" step="0.01" required></label></div></div>@endforeach
+            </div>
+            @endif
             <div class="admin-card mb-4">
                 <h5 class="fw-bold mb-3">Thông Tin Chung</h5>
 
@@ -108,7 +113,7 @@
                     <label for="image" class="form-label fw-semibold">Ảnh đại diện chính</label>
                     @if($product->image)
                         <div class="mb-2">
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="rounded-3 border object-fit-cover" width="100" height="100">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="rounded-3 border object-fit-contain" width="100" height="100">
                         </div>
                     @endif
                     <input type="file" name="image" id="image" class="form-control" accept="image/*">
@@ -120,7 +125,7 @@
                     @if(!empty($product->gallery) && is_array($product->gallery))
                         <div class="d-flex flex-wrap gap-2 mb-2">
                             @foreach($product->gallery as $galImg)
-                                <img src="{{ asset(ltrim($galImg, '/')) }}" alt="Gallery image" class="rounded border object-fit-cover" width="55" height="55">
+                                <img src="{{ asset(ltrim($galImg, '/')) }}" alt="Gallery image" class="rounded border object-fit-contain" width="55" height="55">
                             @endforeach
                         </div>
                     @endif

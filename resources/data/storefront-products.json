@@ -1,0 +1,665 @@
+{
+  "271": {
+    "id": 271,
+    "slug": "leather-vegan-bag",
+    "name": "Leather Vegan Bag",
+    "image": "wp-content/uploads/sites/186/2023/12/accessories-leather-bag-1.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_color": "purple"
+        },
+        "price": 16
+      },
+      {
+        "attributes": {
+          "attribute_pa_color": "brown"
+        },
+        "price": 16
+      },
+      {
+        "attributes": {
+          "attribute_pa_color": "yellow"
+        },
+        "price": 16
+      }
+    ],
+    "price": 16,
+    "sale_price": null,
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A woven-look vegan bag with a roomy silhouette and chain-accent handles. Choose Brown, Purple or Yellow to suit your everyday wardrobe.",
+    "summary": "A woven-look vegan bag with a roomy silhouette and chain-accent handles.",
+    "sku": "VS-271"
+  },
+  "281": {
+    "id": 281,
+    "slug": "vegan-diet-shake",
+    "name": "Vegan Diet Shake",
+    "image": "wp-content/uploads/sites/186/2023/12/nutrition-diet-shake-1.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_flavor": "caramel"
+        },
+        "price": 26
+      },
+      {
+        "attributes": {
+          "attribute_pa_flavor": "vanilla"
+        },
+        "price": 34
+      }
+    ],
+    "price": 26,
+    "sale_price": null,
+    "category": "Fitness & Nutrition",
+    "category_slug": "fitness-nutrition",
+    "description": "A smooth plant-based shake available in Caramel and Vanilla. Choose a flavor to see its price before adding it to your cart.",
+    "summary": "A smooth plant-based shake available in Caramel and Vanilla.",
+    "sku": "VS-281"
+  },
+  "288": {
+    "id": 288,
+    "slug": "fresh-organic-cake",
+    "name": "Fresh Organic Cake",
+    "image": "wp-content/uploads/sites/186/2023/12/bakery-cake-1.jpg",
+    "variations": [],
+    "price": 9,
+    "sale_price": 7,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A sweet bakery treat topped with a creamy swirl and a crisp waffle garnish. Serve with tea or coffee, or share as a dessert.",
+    "summary": "A sweet bakery treat topped with a creamy swirl and a crisp waffle garnish.",
+    "sku": "VS-288"
+  },
+  "421": {
+    "id": 421,
+    "slug": "vegan-foundation-pack",
+    "name": "Vegan Foundation Pack",
+    "image": "wp-content/uploads/sites/186/2023/12/beauty-cosmetic-foundation.jpg",
+    "variations": [],
+    "price": 65,
+    "sale_price": 49,
+    "category": "Beauty & Care",
+    "category_slug": "beauty-care",
+    "description": "A foundation set for a coordinated makeup routine. View the product packaging for shade and application information.",
+    "summary": "A foundation set for a coordinated makeup routine.",
+    "sku": "VS-421"
+  },
+  "440": {
+    "id": 440,
+    "slug": "adult-cat-food",
+    "name": "Adult Cat Food",
+    "image": "wp-content/uploads/sites/186/2023/12/pet-cat-food-adult.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_weight": "500g"
+        },
+        "price": 6
+      },
+      {
+        "attributes": {
+          "attribute_pa_weight": "1kg"
+        },
+        "price": 9
+      }
+    ],
+    "price": 6,
+    "sale_price": null,
+    "category": "Pet Care Items",
+    "category_slug": "pet-care-items",
+    "description": "A plant-based cat food product offered in different pack weights. Select the pack size and consult the packaging for feeding instructions.",
+    "summary": "A plant-based cat food product offered in different pack weights.",
+    "sku": "VS-440"
+  },
+  "448": {
+    "id": 448,
+    "slug": "pets-vegan-stews",
+    "name": "Pets Vegan Stews",
+    "image": "wp-content/uploads/sites/186/2023/12/pet-vegan-dog-stew.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_weight": "1kg"
+        },
+        "price": 110
+      },
+      {
+        "attributes": {
+          "attribute_pa_weight": "2kg"
+        },
+        "price": 150
+      }
+    ],
+    "price": 110,
+    "sale_price": null,
+    "category": "Pet Care Items",
+    "category_slug": "pet-care-items",
+    "description": "A stew-style pet food available in different pack weights. Choose a pack and follow the feeding information on its label.",
+    "summary": "A stew-style pet food available in different pack weights.",
+    "sku": "VS-448"
+  },
+  "481": {
+    "id": 481,
+    "slug": "vegan-puffer-jacket",
+    "name": "Vegan Puffer Jacket",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-jacket-1.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size": "s"
+        },
+        "price": 65
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "m"
+        },
+        "price": 65
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "l"
+        },
+        "price": 65
+      }
+    ],
+    "price": 65,
+    "sale_price": null,
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A padded puffer jacket for layered everyday outfits. Select your size and check the garment label for washing instructions.",
+    "summary": "A padded puffer jacket for layered everyday outfits.",
+    "sku": "VS-481"
+  },
+  "509": {
+    "id": 509,
+    "slug": "straight-organic-jeans",
+    "name": "Straight Organic Jeans",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-straight-fit-jeans.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size-w-l": "w36-l32"
+        },
+        "price": 115
+      },
+      {
+        "attributes": {
+          "attribute_pa_size-w-l": "w36-l34"
+        },
+        "price": 115
+      },
+      {
+        "attributes": {
+          "attribute_pa_size-w-l": "w38-l32"
+        },
+        "price": 115
+      },
+      {
+        "attributes": {
+          "attribute_pa_size-w-l": "w38-l34"
+        },
+        "price": 115
+      }
+    ],
+    "price": 115,
+    "sale_price": null,
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "Straight-cut jeans with a classic denim finish. Choose your waist and length option before adding to your cart.",
+    "summary": "Straight-cut jeans with a classic denim finish.",
+    "sku": "VS-509"
+  },
+  "535": {
+    "id": 535,
+    "slug": "thai-temple-curry",
+    "name": "Thai Temple Curry",
+    "image": "wp-content/uploads/sites/186/2023/12/ready-meal-thai-curry.jpg",
+    "variations": [],
+    "price": 19,
+    "sale_price": 17.5,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A ready-meal curry for a convenient savory dish. Heat according to the packaging and serve with your preferred rice or sides.",
+    "summary": "A ready-meal curry for a convenient savory dish.",
+    "sku": "VS-535"
+  },
+  "557": {
+    "id": 557,
+    "slug": "soft-beanie-hat",
+    "name": "Soft Beanie Hat",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-vegan-beanie-cap.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_color": "green"
+        },
+        "price": 3.5
+      },
+      {
+        "attributes": {
+          "attribute_pa_color": "black"
+        },
+        "price": 3.5
+      }
+    ],
+    "price": 3.5,
+    "sale_price": null,
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A knitted beanie with a soft textured finish. Choose your preferred color for a simple everyday accessory.",
+    "summary": "A knitted beanie with a soft textured finish.",
+    "sku": "VS-557"
+  },
+  "562": {
+    "id": 562,
+    "slug": "vegan-omega-capsules",
+    "name": "Vegan Omega Capsules",
+    "image": "wp-content/uploads/sites/186/2023/12/nutrition-omega3-capsules.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_pack": "30-caps"
+        },
+        "price": 280
+      },
+      {
+        "attributes": {
+          "attribute_pa_pack": "60-caps"
+        },
+        "price": 350
+      }
+    ],
+    "price": 280,
+    "sale_price": null,
+    "category": "Fitness & Nutrition",
+    "category_slug": "fitness-nutrition",
+    "description": "A vegan omega capsule product offered in different pack sizes. Select the capsule count and refer to the label for ingredients and directions.",
+    "summary": "A vegan omega capsule product offered in different pack sizes.",
+    "sku": "VS-562"
+  },
+  "564": {
+    "id": 564,
+    "slug": "sweet-whipping-cream",
+    "name": "Sweet Whipping Cream",
+    "image": "wp-content/uploads/sites/186/2023/12/nutrition-sweet-cream.jpg",
+    "variations": [],
+    "price": 6.7,
+    "sale_price": 5.9,
+    "category": "Fitness & Nutrition",
+    "category_slug": "fitness-nutrition",
+    "description": "A plant-based whipping cream for desserts, hot drinks and other recipes. Follow the pack instructions for preparation and storage.",
+    "summary": "A plant-based whipping cream for desserts, hot drinks and other recipes.",
+    "sku": "VS-564"
+  },
+  "568": {
+    "id": 568,
+    "slug": "pleasant-red-wine",
+    "name": "Pleasant Red Wine",
+    "image": "wp-content/uploads/sites/186/2023/12/beverages-red-wine.jpg",
+    "variations": [],
+    "price": 355,
+    "sale_price": 325,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A red wine from the store beverage collection. See the bottle label for origin, serving and storage information.",
+    "summary": "A red wine from the store beverage collection.",
+    "sku": "VS-568"
+  },
+  "570": {
+    "id": 570,
+    "slug": "organic-cold-coffee",
+    "name": "Organic Cold Coffee",
+    "image": "wp-content/uploads/sites/186/2023/12/beverages-organic-coffee.jpg",
+    "variations": [],
+    "price": 45,
+    "sale_price": 28,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A chilled coffee drink for a refreshing coffee break. Serve cold and follow the label for storage after opening.",
+    "summary": "A chilled coffee drink for a refreshing coffee break.",
+    "sku": "VS-570"
+  },
+  "572": {
+    "id": 572,
+    "slug": "raspberry-leaves-tea",
+    "name": "Raspberry Leaves Tea",
+    "image": "wp-content/uploads/sites/186/2023/12/beverages-raspberry-leaves-tea.jpg",
+    "variations": [],
+    "price": 24,
+    "sale_price": 23.5,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A raspberry leaf tea from the beverage collection. Prepare according to the brewing directions on the packaging.",
+    "summary": "A raspberry leaf tea from the beverage collection.",
+    "sku": "VS-572"
+  },
+  "574": {
+    "id": 574,
+    "slug": "mango-turmeric-juice",
+    "name": "Mango Turmeric Juice",
+    "image": "wp-content/uploads/sites/186/2023/12/beverages-mango-juice.jpg",
+    "variations": [],
+    "price": 34,
+    "sale_price": 32,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A bright mango and turmeric juice blend. Serve chilled and check the bottle for ingredients and storage directions.",
+    "summary": "A bright mango and turmeric juice blend.",
+    "sku": "VS-574"
+  },
+  "576": {
+    "id": 576,
+    "slug": "vegan-cheese-trio",
+    "name": "Vegan Cheese Trio",
+    "image": "wp-content/uploads/sites/186/2023/12/food-vegan-cheese.jpg",
+    "variations": [],
+    "price": 13,
+    "sale_price": 12.8,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A selection of three vegan cheeses for sharing, sandwiches or a snack board. Keep as directed on the pack.",
+    "summary": "A selection of three vegan cheeses for sharing, sandwiches or a snack board.",
+    "sku": "VS-576"
+  },
+  "582": {
+    "id": 582,
+    "slug": "vegan-breakfast-rolls",
+    "name": "Vegan Breakfast Rolls",
+    "image": "wp-content/uploads/sites/186/2023/12/food-breakfast-rolls.jpg",
+    "variations": [],
+    "price": 3.8,
+    "sale_price": 3.2,
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "Golden breakfast rolls for an easy breakfast or snack. Serve with your favorite spread or alongside a warm drink.",
+    "summary": "Golden breakfast rolls for an easy breakfast or snack.",
+    "sku": "VS-582"
+  },
+  "588": {
+    "id": 588,
+    "slug": "organic-body-lotion",
+    "name": "Organic Body lotion",
+    "image": "wp-content/uploads/sites/186/2023/12/beauty-cosmetic-body-lotion.jpg",
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size": "14oz"
+        },
+        "price": 48
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "20oz"
+        },
+        "price": 56
+      }
+    ],
+    "price": 48,
+    "sale_price": null,
+    "category": "Beauty & Care",
+    "category_slug": "beauty-care",
+    "description": "A body lotion offered in different bottle sizes. Select your pack size and refer to the packaging for the ingredient list and application directions.",
+    "summary": "A body lotion offered in different bottle sizes.",
+    "sku": "VS-588"
+  },
+  "10001": {
+    "id": 10001,
+    "slug": "victoria-unisex-perfume",
+    "name": "Victoria Unisex Perfume",
+    "image": "wp-content/uploads/sites/186/2023/12/beauty-perfume-1.jpg",
+    "price": 25,
+    "sale_price": null,
+    "variations": [],
+    "price_max": 25,
+    "category": "Beauty & Care",
+    "category_slug": "beauty-care",
+    "description": "A unisex fragrance from the beauty collection. See its packaging for fragrance notes and application information.",
+    "summary": "A unisex fragrance from the beauty collection.",
+    "sku": "VS-10001"
+  },
+  "10002": {
+    "id": 10002,
+    "slug": "vegan-consumable-oil",
+    "name": "Vegan Consumable Oil",
+    "image": "wp-content/uploads/sites/186/2023/12/nutrition-vegan-consumable-oil.jpg",
+    "price": 85,
+    "sale_price": null,
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size": "14oz"
+        },
+        "price": 85
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "20oz"
+        },
+        "price": 115
+      }
+    ],
+    "price_max": 115,
+    "category": "Fitness & Nutrition",
+    "category_slug": "fitness-nutrition",
+    "description": "A vegan oil product available in different pack sizes. Select an option and follow its label for intended use and storage.",
+    "summary": "A vegan oil product available in different pack sizes.",
+    "sku": "VS-10002"
+  },
+  "10003": {
+    "id": 10003,
+    "slug": "daily-skin-care-bundle",
+    "name": "Daily Skin Care Bundle",
+    "image": "wp-content/uploads/sites/186/2023/12/beauty-cosmetic-vegan-cream-1.jpg",
+    "price": 32,
+    "sale_price": null,
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_weight": "250g"
+        },
+        "price": 32
+      },
+      {
+        "attributes": {
+          "attribute_pa_weight": "500g"
+        },
+        "price": 45
+      }
+    ],
+    "price_max": 40,
+    "category": "Beauty & Care",
+    "category_slug": "beauty-care",
+    "description": "A coordinated skin care bundle for a daily routine. Choose an available option and follow each product label for use.",
+    "summary": "A coordinated skin care bundle for a daily routine.",
+    "sku": "VS-10003"
+  },
+  "11022": {
+    "id": 11022,
+    "slug": "organic-rye-bread",
+    "name": "Organic Rye Bread",
+    "image": "wp-content/uploads/sites/186/2023/12/food-vegan-rye-bread.jpg",
+    "price": 4.5,
+    "sale_price": null,
+    "variations": [],
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A rye loaf from the bakery collection. Slice for sandwiches or toast and store as directed on the packaging.",
+    "summary": "A rye loaf from the bakery collection.",
+    "sku": "VS-11022"
+  },
+  "11023": {
+    "id": 11023,
+    "slug": "choco-hazelnut-spread",
+    "name": "Choco Hazelnut Spread",
+    "image": "wp-content/uploads/sites/186/2023/12/food-chocolate-spread-1.jpg",
+    "price": 39.0,
+    "sale_price": null,
+    "variations": [],
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A chocolate and hazelnut spread for toast, pancakes or desserts. Check the label for ingredients and allergens.",
+    "summary": "A chocolate and hazelnut spread for toast, pancakes or desserts.",
+    "sku": "VS-11023"
+  },
+  "556": {
+    "id": 556,
+    "slug": "classic-leather-belt",
+    "name": "Classic Leather Belt",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-leather-belt.jpg",
+    "price": 16.0,
+    "sale_price": 13.8,
+    "variations": [],
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A classic belt from the vegan accessories collection. Choose an available option and check the care label for material information.",
+    "summary": "A classic belt from the vegan accessories collection.",
+    "sku": "VS-556"
+  },
+  "552": {
+    "id": 552,
+    "slug": "cotton-blanket-scarf",
+    "name": "Cotton Blanket Scarf",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-cotton-scarf.jpg",
+    "price": 15.0,
+    "sale_price": null,
+    "variations": [],
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A blanket-style scarf for layered outfits. View the available options and follow the care label when washing.",
+    "summary": "A blanket-style scarf for layered outfits.",
+    "sku": "VS-552"
+  },
+  "529": {
+    "id": 529,
+    "slug": "cotton-jersey-dress",
+    "name": "Cotton Jersey Dress",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-jersey-dress.jpg",
+    "price": 68.0,
+    "sale_price": null,
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size": "l"
+        },
+        "price": 68
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "xl"
+        },
+        "price": 68
+      }
+    ],
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "A jersey dress with a relaxed everyday silhouette. Choose an available size and refer to the care label for washing.",
+    "summary": "A jersey dress with a relaxed everyday silhouette.",
+    "sku": "VS-529"
+  },
+  "446": {
+    "id": 446,
+    "slug": "organic-pet-treats",
+    "name": "Organic Pet Treats",
+    "image": "wp-content/uploads/sites/186/2023/12/pet-dog-treats.jpg",
+    "price": 45.0,
+    "sale_price": 32.0,
+    "variations": [],
+    "category": "Pet Care Items",
+    "category_slug": "pet-care-items",
+    "description": "Pet treats offered as a snack alongside the usual feeding routine. Follow the package guidance on portions and intended pets.",
+    "summary": "Pet treats offered as a snack alongside the usual feeding routine.",
+    "sku": "VS-446"
+  },
+  "491": {
+    "id": 491,
+    "slug": "organic-twill-trouser",
+    "name": "Organic Twill Trouser",
+    "image": "wp-content/uploads/sites/186/2023/12/clothes-acc-twill-trouser.jpg",
+    "price": 19.0,
+    "sale_price": null,
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_size": "l"
+        },
+        "price": 19
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "xl"
+        },
+        "price": 19
+      },
+      {
+        "attributes": {
+          "attribute_pa_size": "xxl"
+        },
+        "price": 19
+      }
+    ],
+    "category": "Clothes & Accessories",
+    "category_slug": "clothes-accessories",
+    "description": "Twill trousers for versatile everyday outfits. Select an available size and follow the garment care instructions.",
+    "summary": "Twill trousers for versatile everyday outfits.",
+    "sku": "VS-491"
+  },
+  "540": {
+    "id": 540,
+    "slug": "organic-veggie-masala",
+    "name": "Organic Veggie Masala",
+    "image": "wp-content/uploads/sites/186/2023/12/ready-meal-organic-veg-masala.jpg",
+    "price": 8.0,
+    "sale_price": 6.9,
+    "variations": [],
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A vegetable masala ready meal for a convenient savory dish. Heat as directed and pair with your preferred side.",
+    "summary": "A vegetable masala ready meal for a convenient savory dish.",
+    "sku": "VS-540"
+  },
+  "533": {
+    "id": 533,
+    "slug": "salted-butternut-soup",
+    "name": "Salted Butternut Soup",
+    "image": "wp-content/uploads/sites/186/2023/12/ready-meal-salt-soup.jpg",
+    "price": 29.0,
+    "sale_price": 24.0,
+    "variations": [],
+    "category": "Vegan Food & Drinks",
+    "category_slug": "food-drinks",
+    "description": "A butternut soup for a warming lunch or starter. Follow the pack directions for heating and storage.",
+    "summary": "A butternut soup for a warming lunch or starter.",
+    "sku": "VS-533"
+  },
+  "452": {
+    "id": 452,
+    "slug": "spinach-dog-sticks",
+    "name": "Spinach Dog Sticks",
+    "image": "wp-content/uploads/sites/186/2023/12/pet-organic-spinach-sticks.jpg",
+    "price": 22.0,
+    "sale_price": null,
+    "variations": [
+      {
+        "attributes": {
+          "attribute_pa_weight": "1kg"
+        },
+        "price": 40
+      },
+      {
+        "attributes": {
+          "attribute_pa_weight": "500g"
+        },
+        "price": 22
+      }
+    ],
+    "category": "Pet Care Items",
+    "category_slug": "pet-care-items",
+    "description": "Spinach dog sticks from the pet care collection. Follow the package guidance for portions and suitable dogs.",
+    "summary": "Spinach dog sticks from the pet care collection.",
+    "sku": "VS-452"
+  }
+}

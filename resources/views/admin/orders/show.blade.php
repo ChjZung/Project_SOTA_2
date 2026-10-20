@@ -79,6 +79,7 @@
                                 </td>
                                 <td>
                                     <div class="fw-bold text-dark">{{ $item->product_name }}</div>
+                                    @if($item->options)<div class="text-muted small">Lựa chọn: {{ implode(' / ', $item->options) }}</div>@endif
                                     @if($item->product)
                                         <div class="text-muted small">
                                             Mã: <span class="badge bg-light text-secondary border">{{ $item->product->product_code ?? 'VGN-'.$item->product->id }}</span>

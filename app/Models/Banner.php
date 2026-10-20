@@ -41,11 +41,12 @@ class Banner extends Model
     public function getImageUrlAttribute(): string
     {
         if (!$this->image) {
-            return asset('wp-content/uploads/sites/186/2024/02/vegan-shop-hero-bg.jpg');
+            return asset('wp-content/uploads/sites/186/2023/12/hero-image-1.jpg');
         }
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
             return $this->image;
         }
-        return asset(ltrim($this->image, '/'));
+        $path = ltrim($this->image, '/');
+        return is_file(public_path($path)) ? asset($path) : asset('wp-content/uploads/sites/186/2023/12/hero-image-1.jpg');
     }
 }

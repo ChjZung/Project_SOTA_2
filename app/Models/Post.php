@@ -53,6 +53,7 @@ class Post extends Model
         if (str_starts_with($this->thumbnail, 'http://') || str_starts_with($this->thumbnail, 'https://')) {
             return $this->thumbnail;
         }
-        return asset(ltrim($this->thumbnail, '/'));
+        $path = ltrim($this->thumbnail, '/');
+        return is_file(public_path($path)) ? asset($path) : asset('wp-content/uploads/sites/186/2024/02/blog-vegan-food-usa-01.jpg');
     }
 }

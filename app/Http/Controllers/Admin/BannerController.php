@@ -83,7 +83,7 @@ class BannerController extends Controller
             'button_text' => $validated['button_text'] ?? null,
             'button_link' => $validated['button_link'] ?? null,
             'sort_order' => (int) ($validated['sort_order'] ?? 0),
-            'is_active' => $request->boolean('is_active', true),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.banners.index')
@@ -139,7 +139,7 @@ class BannerController extends Controller
             'button_text' => $validated['button_text'] ?? null,
             'button_link' => $validated['button_link'] ?? null,
             'sort_order' => (int) ($validated['sort_order'] ?? 0),
-            'is_active' => $request->boolean('is_active', true),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.banners.index')

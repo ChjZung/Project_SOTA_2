@@ -2,6 +2,9 @@
 
 @section('title', 'Thêm Danh Mục Mới')
 
+@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/admin-category-images.css') }}">@endpush
+@push('scripts')<script src="{{ asset('assets/js/admin-category-images.js') }}" defer></script>@endpush
+
 @section('content')
 <div class="d-flex align-items-center justify-content-between mb-4">
     <div>
@@ -42,11 +45,7 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label for="image" class="form-label fw-semibold">Ảnh đại diện danh mục</label>
-                    <input type="file" name="image" id="image" class="form-control" accept="image/*">
-                    <div class="form-text small">Định dạng hỗ trợ: JPG, PNG, WEBP. Tối đa 2MB.</div>
-                </div>
+                @include('admin.categories.image-field')
 
                 <div class="mb-3">
                     <label for="description" class="form-label fw-semibold">Mô tả ngắn</label>

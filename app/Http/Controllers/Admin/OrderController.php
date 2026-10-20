@@ -95,6 +95,11 @@ class OrderController extends Controller
 
         // 2. Thực hiện cập nhật trong Transaction nguyên tử
         DB::transaction(function () use ($order, $currentStatus, $targetStatus, $newPaymentStatus, $validated) {
+            $order = Order::whereKey($order->id)->lockForUpdate()->firstOrFail();
+            $currentStatus = $order->status;
+            if ($targetStatus !== $currentStatus && !$order->canTransitionTo($targetStatus)) {
+                throw \Illuminate\Validation\ValidationException::withMessages(['status' => 'Trạng thái đơn đã thay đổi. Vui lòng tải lại trang.']);
+            }
             // Khi hủy đơn hàng -> Hoàn kho + Hoàn coupon
             if ($targetStatus === 'cancelled' && $currentStatus !== 'cancelled') {
                 foreach ($order->items as $item) {
@@ -147,6 +152,9 @@ class OrderController extends Controller
      */
     public function confirmPayment(Order $order): RedirectResponse
     {
+        if ($order->status === 'cancelled') {
+            return back()->with('error', 'Không thể xác nhận thanh toán cho đơn đã hủy.');
+        }
         if ($order->payment_status === 'paid') {
             return back()->with('info', "Đơn hàng #{$order->order_code} đã được thanh toán trước đó.");
         }
@@ -174,6 +182,9 @@ class OrderController extends Controller
      */
     public function destroy(Order $order): RedirectResponse
     {
+        if ($order->status !== 'cancelled') {
+            return back()->with('error', 'Chỉ xóa đơn đã hủy. Hãy hủy đơn trước để hệ thống hoàn kho và mã giảm giá.');
+        }
         $orderNumber = $order->order_code;
         $order->items()->delete();
         $order->delete();
